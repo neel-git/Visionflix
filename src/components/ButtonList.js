@@ -12,10 +12,10 @@ const list = [
   "Live",
   "Mixes",
   "Cricket",
-  "Cooking",
-  "Music",
-  "Boxing",
-  "Javascript",
+  // "Cooking",
+  // "Music",
+  // "Boxing",
+  // "Javascript",
 ];
 const ButtonList = () => {
   return (

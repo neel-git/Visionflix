@@ -7,8 +7,7 @@ export const YOUTUBE_LOGO =
 export const USER_LOGO =
   "https://w7.pngwing.com/pngs/529/816/png-transparent-computer-icons-user-profile-avatar-heroes-monochrome-black-thumbnail.png";
 
-const GOOGLE_API_KEY = "AIzaSyAVGtG16B-P-TLNzmQw728QXCEpFkfFGTY";
+// const API_KEY = process.env.GOOGLE_API_KEY;
 
 export const YOUTUBE_VIDEOS_API =
-  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=" +
-  GOOGLE_API_KEY;
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=AIzaSyBL5krdviZE0oXIig93QOiswwjs_7atZ64";
