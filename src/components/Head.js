@@ -6,19 +6,28 @@ import {
   YOUTUBE_SEARCH_API,
 } from "../utils/constants";
 import { toggleMenu } from "../utils/appSlice";
-import { useDispatch } from "react-redux";
-import { BiSearchAlt2 } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { BiSearch } from "react-icons/bi";
+import { cacheResults } from "../utils/searchSlice";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const dispatch = useDispatch();
+  const searchCache = useSelector((store) => store.search);
 
   useEffect(() => {
     //make an api call after every keypress
     //but if the diff b/w 2 API call is <200ms
     //decline the API call
 
-    const timer = setTimeout(() => getSearchSuggestions(), 250);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 250);
     return () => {
       clearTimeout(timer);
     };
@@ -29,9 +38,15 @@ const Head = () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
+
+    //update cache
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
   };
 
-  const dispatch = useDispatch();
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
@@ -49,20 +64,25 @@ const Head = () => {
       <div className="col-span-10 px-10">
         <div>
           <input
-            className="w-1/2 border border-b-gray-400 p-2 rounded-l-full"
+            className="w-1/2 border border-b-gray-400 p-2 rounded-l-full h-10"
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="border border-gray-400 py-2 px-5 bg-gray-100 rounded-r-full">
-            Search
+          <button className="border border-gray-400 py-1 px-5 bg-gray-100 rounded-r-full h-10">
+            <BiSearch />
           </button>
         </div>
         <div className="fixed bg-white py-2 px-2 w-[37rem] shadow-lg rou border-gray-200">
           <ul>
             {suggestions.map((s) => (
               <li key={s} className="py-2 px-3 shadow-sm hover:bg-gray-100">
-                <BiSearchAlt2 /> {s}
+                <div className="flex">
+                  <span className="px-1 py-2">
+                    <BiSearch />
+                  </span>
+                  <span className="py-1">{s}</span>
+                </div>
               </li>
             ))}
           </ul>

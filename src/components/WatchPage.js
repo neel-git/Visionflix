@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get("v"));
+  //console.log(searchParams.get("v"));
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(closeMenu());
@@ -21,6 +21,7 @@ const WatchPage = () => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       ></iframe>
+      <div className="flex flex-col">{/* <CommentsContainer /> */}</div>
     </div>
   );
 };
