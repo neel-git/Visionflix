@@ -14,3 +14,73 @@ export const YOUTUBE_VIDEOS_API =
 
 export const YOUTUBE_SEARCH_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
+export const commentData = [
+  {
+    name: "Neelkamal",
+    text: "Lorem epsum dolor sit amet, whatever the text it is",
+    replies: [],
+  },
+  {
+    name: "Neelkamal",
+    text: "Lorem epsum dolor sit amet, whatever the text it is",
+    replies: [
+      {
+        name: "Neelkamal",
+        text: "Lorem epsum dolor sit amet, whatever the text it is",
+        replies: [],
+      },
+    ],
+  },
+  {
+    name: "Neelkamal",
+    text: "Lorem epsum dolor sit amet, whatever the text it is",
+    replies: [
+      {
+        name: "Neelkamal",
+        text: "Lorem epsum dolor sit amet, whatever the text it is",
+        replies: [
+          {
+            name: "Neelkamal",
+            text: "Lorem epsum dolor sit amet, whatever the text it is",
+            replies: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Neelkamal",
+    text: "Lorem epsum dolor sit amet, whatever the text it is",
+    replies: [
+      {
+        name: "Neelkamal",
+        text: "Lorem epsum dolor sit amet, whatever the text it is",
+        replies: [],
+      },
+      {
+        name: "Neelkamal",
+        text: "Lorem epsum dolor sit amet, whatever the text it is",
+        replies: [
+          {
+            name: "Neelkamal",
+            text: "Lorem epsum dolor sit amet, whatever the text it is",
+            replies: [
+              {
+                name: "Neelkamal",
+                text: "Lorem epsum dolor sit amet, whatever the text it is",
+                replies: [
+                  {
+                    name: "Neelkamal",
+                    text: "Lorem epsum dolor sit amet, whatever the text it is",
+                    replies: [],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
